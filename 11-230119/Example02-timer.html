@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Timer</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <script>
+        // console 창에 5개의 문구를 2초 간격으로 출력
+        // 마지막 문구를 출력한 다음 더 이상 출력되지 않도록 타이머를 해제
+
+        // 출력할 문구를 저장할 배열
+        var comments = [
+        /* index = 0 */ "1. Time is gold.",
+        /* index = 1 */ "2. No sweat, no sweet",
+        /* index = 2 */ "3. Asking costs nothings.",
+        /* index = 3 */ "4. Step by step goes a long way.",
+        /* index = 4 */ "5. You will never know until you try."
+        ];
+
+        var index = 0;
+
+        var timerId = window.setInterval(function(){
+            console.log(comments[index]);
+            index++;
+
+            // 마지막 문구를 출력하고 인덱스가 범위를 벗어났을 때
+            // 타이머를 해제
+            if(index == comments.length)
+                window.clearInterval(timerId);
+        },2000);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Function</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <!-- 외부 JavaScript 파일 불러오기 -->
+    <script src="../../Js/script.js"></script>
+</head>
+<body>
+    <pre><script>
+        // 두 수를 매개변수로 받아서
+        // 두 수의 평균을 반환하는 함수(getAverage)를 정의 및 호출하여
+        // 평균을 출력하는 프로그램을 작성
+
+        // 함수를 정의할 때
+        //  몇 개의 데이터를 받아야하는가
+        //  어떤 기능의 함수를 만들 것인가?
+        //  함수의 결과 값이 무엇인가
+
+        // 두 수의 평균을 반환하는 함수
+
+        function getAverage(a, b) {
+            return (a + b) / 2;
+        }
+
+        var avg1 = getAverage(10,30);
+        // document.writeln("avg1 = " + avg1);
+        writeln("avg1 = " + avg1);
+
+        hr();
+
+        var avg2 = getAverage(15,20);
+        // document.writeln("avg2 = " + avg2);
+        writeln("avg2 = " + avg2);
+        </script></pre>
+
+        <pre><script>
+
+            // 두 수를 매개 변수로 받아서
+            // 두 수 중 큰 값을 반환하는 함수(max)를 정의하고 
+            // 정의된 함수를 호출하여 결과를 출력
+            
+            function max (a, b){
+                // 조건문
+                //if (a > b) return a;
+                // else return b; 
+                
+                // 조건 연산자
+                return a > b ? a : b;
+            }
+
+            var bigger1 = max(10,50);
+            writeln("bigger = " + bigger1)
+            var bigger2 = max(32, 21);
+            writeln("bigger = " + bigger2)
+            
+        </script></pre>
+</body>
+</html>

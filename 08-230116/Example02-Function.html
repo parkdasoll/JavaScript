@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example02 - Function</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 두 수를 매개변수로 받아서
+        // 두 수의 평균을 반환하는 함수(getAverage)를 정의 및 호출하여
+        // 평균을 출력하는 프로그램을 작성
+
+        function getAverage(first,second) {
+            return (first + second) / 2;
+        }
+
+        function writeln(str) {
+            document.writeln(str);
+        }
+
+        function hr() {
+            document.write("<hr>");
+        }
+
+        var avg1 = getAverage(10,30);
+        writeln("(10 + 30) / 2 = " + avg1);
+
+        hr();
+        var avg2 = getAverage(15,20);
+        writeln("(15 + 20) / 2 = " + avg2);
+        </script></pre>
+</body>
+</html>

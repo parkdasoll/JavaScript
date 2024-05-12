@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Loop</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 반복문의 흐름을 제어하는 제어문
+        //  - 반복문은 조건을 만족하는 동안에는 계속 반복 수행
+        //      → 반복문 수행 도중에 원하는 결과를 얻어서
+        //        더 이상 반복문을 수행할 필요가 없는 경우가 발생
+        //      → 조건을 검사하는 위치가 고정이기 때문에 
+        //        원하는 흐름으로 코드를 작성하는데 한계가 있다.
+        //  - 기존의 제어문과는 달리 키워드로만 작성되어 사용된다.
+        //  - 종류
+        //      break     : 반복문을 탈출(exit)
+        //      continue  : 반복 수행 중인 블록을 종료(skip) = 블록 내의 남은 코드를 넘긴다.
+        //                : 다음 반복으로 넘어간다.
+
+        var numbers = [4, 30, 45, 12, 7, 17, 5, 3, 1, 16];
+
+        // 사용자가 입력한 값이 배열에 저장되어있는지 탐색을 하자!
+        var search = 7; // 사용자가 입력한 값이라고 가정!
+
+        for(var i = 0; i < numbers.length; i++) {
+            document.writeln("searching...;");
+
+            // 사용자가 입력한 값이 i 번째 원소와 같은지 검사
+            if(search == numbers[i]) {
+                document.writeln("Complete!");
+                document.writeln(search + "'s index = " + i);
+            }
+        }
+
+        // → 반복문의 목적을 달성해도 반복문이 끝날 때까지 계속 반복 수행
+    </script></pre>
+
+    <pre><script>
+        // 제어문을 사용하지 않고 반복문만을 이용
+        //  - 제어문을 사용하지 않고 반복문의 조건식에 조건을 작성함으로서 해결은 가능하나
+        //    종료하기 위한 조건이 많아질 경우 조건식을 한 번에 관리하기가 힘들어진다.
+        for(var i = 0; i < numbers.length && search != numbers[i-1]; i++) {
+            document.writeln("searching...");
+
+            // 사용자가 입력한 값이 i 번째 원소와 같은지 검사
+            if(search == numbers[i]) {
+                document.writeln("Complete!");
+                document.writeln(search + "'s index = " + i);
+            }
+        }
+    </script></pre>
+
+    <pre><script>
+        // break 문을 이용한 반복문
+        //    break : 자신을 포함하는 반복문을 즉시 종료
+
+        for(var i = 0; i < numbers.length; i++) {
+            document.writeln("searching...;");
+
+            // 사용자가 입력한 값이 i 번째 원소와 같은지 검사
+            if(search == numbers[i]) {
+                document.writeln("Complete!");
+                document.writeln(search + "'s index = " + i);
+
+                // 반복문의 목표를 이뤘기 때문에 더 이상 반복문을 수행할 필요가 없다.
+                // 따라서 반복문을 즉시 종료
+                break;
+            }
+            /* 
+            if(....) {
+                break;
+            }
+            */
+        }
+    </script></pre>
+    
+    <pre><script>
+        // continue 문을 이용한 반복문 제어
+        // continue : 현재 반복 수행 중인 블록을 종료
+        //          : 바로 다음 반복으로 넘어간다.
+
+        for(var i = 0; i < numbers.length; i++) {
+            document.writeln("searching...;");
+
+            // 사용자가 입력한 값이 i 번째 원소와 다르면
+            // 더 이상 수행 할 코드가 없기 때문에 다음 반복으로 넘기자!
+            if(search != numbers[i])
+                continue;  // → '반복 후 작업' 으로 넘어간다.
+
+            // 사용자가 입력한 값이 i 번째 원소와 같은지 검사
+                document.writeln("Complete!");
+                document.writeln(search + "'s index = " + i);
+                break; // 반복문 종료
+            
+        }
+    </script></pre>
+
+    <pre><script>
+        // 중첩 반복문
+        //  - 반복문 내에 또 다른 반복문을 작성한 형태
+        //  - 반복문을 반복 수행할 때 사용된다.
+        //  - 중첩 반복문은 생각보다 많이 사용된다.
+
+        for(var i = 0; i < 10; i++){
+            document.writeln("i : " + i);
+
+            for(var j = 0; j < 3; j++) {
+                document.writeln("  j : " + j);
+
+                // break 을 포함하는 반복문만 종료된다.
+                if(j == 1) break;
+            }
+        }
+    </script></pre>
+</body>
+</html>

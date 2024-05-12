@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example03 - Timer</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <ul id="comments" class="gray-box"></ul>
+
+    <script>
+        // #comments 에 배열 comments 의 문구를 li 요소로 2초 마다 하나씩 추가
+
+        var comments = [
+        /* index = 0 */ "1. Time is gold.",
+        /* index = 1 */ "2. No sweat, no sweet",
+        /* index = 2 */ "3. Asking costs nothings.",
+        /* index = 3 */ "4. Step by step goes a long way.",
+        /* index = 4 */ "5. You will never know until you try."
+        ];
+        var grayBox = document.getElementById("comments");
+
+        // console.log(grayBox);
+
+        var i = 0;
+        console.log(grayBox);
+        var timerId = window.setInterval(function(){
+
+            grayBox.innerHTML = ("<li>" + comments[i] + "</li>");
+                console.log(grayBox.innerHTML);
+                i++;
+            if(i == comments.length)
+                window.clearInterval(timerId);
+        },2000);
+            
+        
+    </script>
+</body>
+</html>

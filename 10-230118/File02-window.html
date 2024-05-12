@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Window</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <script src="../../Js/script.js"></script>
+</head>
+<body>
+    <pre><script>
+        // window 객체
+        //  - 브라우저 객체 모델(Browser Object Model; BOM)에서 최상위 객체
+        //  - 브라우저를 표현한 객체
+
+        // window 객체의 속성
+        writeln("window.innerWidth   = " + window.innerWidth);
+        writeln("window.innerheight  = " + window.innerHeight);
+        writeln("window.outerwidth   = " + window.outerWidth);
+        writeln("window.outerheight  = " + window.outerHeight);
+        writeln("window.scrollY      = " + window.scrollY);
+    </script></pre>
+    
+    <script>
+        // window 객체의 타이머 관련 메서드
+
+        // 타이머 등록 메서드
+        //  - window.setTimeout(function, mills)
+        //      : 일정 시간 '뒤에' 지정된 기능을 수행하는 타이머를 등록
+        //      : 메서드의 반환 값은 등록된 타이머의 ID(type: number)
+        //  - window.setInterval(function, mills)
+        //      : 일정 시간 '마다' 지정된 기능을 수행하는 타이머를 등록
+        //      : 메서드의 반환 값은 등록된 타이머의 ID(type: number)
+
+        // 타이머 해제 메서드
+        //  - window.clearTimeout(timerId)
+        //      :setTimeout() 메서드로 등록된 타이머를 해제
+        //  - window.clearInterval(timerId)
+        //      :setInterval() 메서드로 등록된 타이머를 해제
+        // -----------------------------------------------------------------------
+
+        // 타이머가 수행할 함수
+        function timerHandler1() {
+            console.log("Timer01: Hello World!");
+        }
+
+        console.log("BEFORE: setTimeout()");
+
+        // 2초 뒤에 timerHandler1 함수를 수행하는 타이머를 등록
+        window.setTimeout(timerHandler1,2000);
+        // → 타이머가 수행할 함수의 코드를 넘기는 것이기 때문에
+        //   함수의 식별자만 작성해야한다.
+        // → 해당 메서드는 타이머를 등록만 할 뿐 실행은 브라우저가 시간 됐을 때 한다.
+        // → 등록한 뒤 그 다음 명령어들을 바로 수행한다.
+
+        console.log("AFTER: setTimeout()");
+
+
+        // 타이머가 수행할 함수를 미리 정의하여 전달할 수 있지만
+        // 한 타이머에서만 사용된다면 굳이 따로 정의할 필요 없이 
+        // 익명 함수로 전달하는 것이 일반적이다.
+
+        console.log("BEFORE: setInterval()");
+
+        // 1초 마다 전달된 함수를 수행하는 타이머를 등록
+        window.setInterval(function() {
+            console.log("Timer02: Hello JavaScipt!");
+        }, 1000);
+        
+        console.log("AFTER: setInterval()");
+        </script>
+</body>
+</html>

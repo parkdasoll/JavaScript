@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Function</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 함수(Function)
+        //  - 입력을 받아 연산/처리를 하고 결과를 반환하는 코드들의 집합
+        //  - 여러 곳에서 중복된 코드를 하나의 집합으로 표현하여 재사용하기 위해 사용
+        //  - 관련 용어
+        //      함수 정의(function definition)
+        //        : 프로그램에서 사용할 함수를 정의(선언)하는 과정
+        //        : function 키워드를 통해 함수를 정의
+        //      함수 이름(function name)
+        //        : 함수의 기능을 표현하기 위한 이름 = 식별자
+        //        : function 키워드 다음에 작성
+        //      매개 변수(parameter)
+        //        : 함수에 전달되는 값(인자)을 저장하기 위한 변수
+        //        : 함수에 전달될 값의 개수에 따라 매개변수의 개수도 정해진다.
+        //      인자(argument)
+        //        : 함수를 호출(사용)할 때 전달되는 값
+        //      반환 값(return value)
+        //        : 함수의 결과 값
+        //        : 함수가 종료되고 호출한 곳으로 되돌아 갈 때 전달되는 값
+        //        : return 키워드 다음에 작성
+        //      함수 호출(function call)
+        //        : 정의된 함수를 사용하는 것을 의미
+        //        : 함수의 식별자와 함께 함수 호출 연산자(소괄호)를 지정하고
+        //          매개변수의 개수에 맞게 인자를 작성
+        //        : 함수를 호출하면 프로그램의 흐름이 함수를 정의한 곳으로 이동
+        //          함수가 끝나면 함수를 호출한 곳으로 되돌아간다.(return)
+        //---------------------------------------------------------------------------
+        
+        // 함수 정의
+        //  - "Hello World!" 를 출력하는 함수
+        function hello() {
+            document.writeln("Hello JacaScript!");
+        }
+        
+        //  - hr 태그를 작성하기 위한 함수
+        function hr() {
+            document.write("<hr>");
+        }
+
+        // document.writeln("Hello World!");
+        hello();    // 함수 호출
+        // → 함수를 호출할 때 함수의 식별자와 함수 호출 연산자를 작성 해야한다.
+        // → 인자 값이 없더라도 함수 호출 연산자를 작성해야 함수가 실행된다.
+
+        // document.write("<hr>");
+        hr();
+
+        // document.writeln("Hello World!");
+        // 함수 재호출
+        //  - 반복문은 유사한 코드를 연속해서 실핼할 때 사용
+        //  - 함수는 여러 곳에서 실행할 때 사용
+        hello();
+
+        hr();
+
+        // 함수 = 코드를 저장
+        // 함수의 식별자와 함수 호출 연산자를 작성하면 함수가 실행되지만
+        // 함수의 식별자만 작성될 경우 함수의 코드를 불러온다.
+        //  → 불러와서 실행하는 것은 아니다.
+        //  → 함수의 코드를 데이터처럼 사용할 수 있다.
+        document.writeln(hello);
+    </script></pre>
+
+    <pre><script>
+        // 사용자의 이름을 출력하는 함수
+        //  - 사용자에 따라 이름이 달라지기 때문에
+        //    함수 외부에서 사용자의 이름을 전달 받아야한다.
+        //  → 함수의 매개변수로 이름을 받아서 출력
+        function printName(name) {
+            document.writeln("My name is " + name + ".");
+        }
+
+        // 사용자의 이름과 나이를 출력하는 함수
+        //  - 함수 외부에서 두 개의 데이터를 전달 받기 위해
+        //    매개 변수를 두 개 작성해야한다.
+        function printNameAndAge(name, age) {
+            document.writeln("My name is " + name + ".");
+            document.writeln("My age is " + age + ".");
+        }
+
+        function println(str) {
+            document.writeln(str);
+        }
+
+        // 함수 호출
+        printName("홍길동");
+        printName("Harry");
+        printNameAndAge("김철수", 18);
+
+        println("Hello World!!");
+    </script></pre>
+
+    <pre><script>
+        // f(x) = x + 10
+        //  위 함수를 표현하는 함수를 정의
+        function f(x) {
+            // var result = x + 10;
+            // return result;
+            return x + 10;
+            // → 함수가 종료되고 호출한 곳으로 되돌아갈 때
+            //   지정된 값이 전달된다.
+            // → 연산자를 포함한 표현식을 작성하면
+            //   표현식의 결과 값이 전달된다.
+        }
+        var value = f(10);
+        // var value = 20;
+
+        println("f(10) = " + value);
+
+        println("f(5) = " + f(5) );
+        // println("f(5) = " + 15 );
+        // println("f(5) = 15" );
+
+        var value2 = f(7) + f(11);
+        // var value2 = 17 + 21;
+        // var value2 = 38;
+
+        println("f(7) + f(11) = " + value2);
+    </script></pre>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Conditional Statement</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // if-else if 문
+        //  - 다수의 조건에 따라 코드를 수행하기 위해 사용
+        //  - 조건식을 작성할 수 없었던 else 문에
+        //    조건식을 작성하기 위해 if 문을 추가한 형태
+        //      else + if()  → 앞의 조건을 만족하지않고, 해당 조건을 만족하는 경우
+        //  - else if 문의 제한된 수는 없다.
+        //  - 마지막에는 else 문을 선택적으로 작성할 수 있다.
+        //  - 중간에 만족하는 조건이 있다면
+        //    이후 조건은 검사하지 않고 넘어간다.
+
+        // a 가 10 보다 크면 "a 가 10 보다 큽니다." 를 출력
+        // a 가 10 보다 작으면 "a 가 10 보다 작습니다." 를 출력
+        // a 가 10 과 같으면 "a 가 10 과 같습니다." 를 출력
+
+        var a = 10;
+
+        document.writeln("a = " + a);
+
+        if(a > 10){
+            document.writeln("a 가 10 보다 큽니다.");
+        }
+        else if(a < 10) {
+            document.writeln("a 가 10 보다 작습니다.");
+        }
+        else if(a == 10) {
+            document.writeln("a 가 10 과 같습니다.");
+        }
+    </script></pre>
+
+    <pre><script>
+        // 변수 n1 의 값이 양수인지, 음수인지, 0인지 출력
+        // 양수(positive number) : 0 보다 큰 수
+        // 음수(negatibe number) : 0 보다 작은 수
+
+        var n1 = 15;
+
+        document.writeln("n1 = " + n1);
+
+        if(n1 > 0) {
+            document.writeln("n1 is positive number!");
+        }
+        else if(n1 < 0) {
+            document.writeln("n1 is negative number!");
+        }
+        // else if(n1 == 0) {
+            else {  // 0 보다 크지도 않고, 작지도 않은 경우는 0 과 같은 경우 밖에 없다.
+            document.writeln("n1 is zero!");
+        }
+    </script></pre>
+
+    <pre><script>
+        // 변수 n2 의 값이 짝수인지 홀수인지 0인지 출력
+        // 짝수 (even number)
+        // 홀수 (odd number)
+
+        var n2 = 0;
+
+        document.write("<hr>");
+
+        if(n2 == 0) {
+            document.writeln("n1 is zero!");
+        }
+        else if(n2 % 2==0) {
+            document.writeln("n1 is even number!");
+        }
+        else if(2 % 2 != 0){
+            document.writeln("n1 is odd number!");
+        }
+        </script></pre>
+        <pre><script>
+            // 변수 n3 의 값이
+            // 3의 배수이면 "Fizz"
+            // 5의 배수이면 "Buzz"
+            // 3의 배수이면서 5의 배수이면 "FizzBuzz"
+            // 그 외의 수이면 n3 의 값을 출력
+
+            var n3 = 155;
+
+            if (n3 % 3 == 0 && n3 % 5 == 0) {
+                document.writeln("FizzBuzz");
+            }
+            else if (n3 % 3 == 0) {
+                document.writeln("Fizz");
+            }
+            else if (n3 % 5 == 0) {
+                document.writeln("Buzz");
+            }
+            else {
+                document.writeln(n3);
+            }
+        </script></pre>
+        <hr>
+        <pre><script>
+            // 중첩 조건문
+            //  - 조건문 내의 또 다른 조건문을 작성한 형태
+            //  - 중첩에 대한 제한된 수는 없지만
+            //    최소한으로 작성하는 것이 좋다.
+
+            // a 가 10 보다 크면 "a 가 10 보다 큽니다." 를 출력
+            // a 가 10 보다 작으면 "a 가 10 보다 작습니다." 를 출력
+            // a 가 10 과 같으면 "a 가 10 과 같습니다." 를 출력
+            a = 5;
+            if(a > 10) {
+                document.writeln("a 가 10 보다 큽니다.");
+            }
+            else {
+                // a 가 10 보다 크지 않은 경우 처리해야하는 코드가 있다면
+                // 중첩 조건문을 통해 작성하는 경우가 있다.
+                document.write("a 가 10 보다 크지 않고, ");
+                if(a < 10) {
+                    document.writeln("a 가 10 보다 작습니다.");
+                }
+                else if(a == 10) {
+                    document.writeln("a 가 10 과 같습니다.");
+                }
+            }
+        </script></pre>
+
+        <pre><script>
+            // switch 문
+            //  - if 문과는 다르게 조건에 의해 동작되는 것이 아닌
+            //    값에 의해 동작된다.
+            //  - 지정된 값에 따라 수행할 코드를 결정할 때 사용
+            //  - switch 문은 모든 경우의 코드를 하나의 블록으로 작성
+            //  - case 문을 통해 값을 지정하여 블록 내의 시작 점을 결정
+            //  - case 문을 통해 시작점을 결정하고 블록의 끝까지 실행
+            //    조건에 맞는 case 문만 수행하려면 원하는 지점에서
+            //    블럭을 종료(탈출)하기 위한 break 제어문을 사용
+
+            var selectedMenu = 2;
+
+            // if 문
+            if(selectedMenu == 1 ) {}
+            else if(selectedMenu == 2 ) {}
+            else if(selectedMenu == 3 ) {}
+            else {}
+
+            // switch 문
+            switch(selectedMenu) {
+                case 1:         // if (selecteMenu == 1)
+                document.writeln("First Menu");
+                break;      // switch 문을 종료
+                case 2:         // if (selecteMenu == 2)
+                document.writeln("Second Menu");
+                break;      // switch 문을 종료
+                case 3:         // if (selecteMenu == 3)
+                document.writeln("Third Menu");
+                break;      // switch 문을 종료
+                default:        // else = 위의 값에 모두 해당하지 않는 경우
+                document.writeln("Other Menu");
+            }
+        </script></pre>
+
+        <pre><script>
+            // 변수 n4 의 값을 3으로 나눈 나머지가
+            // 0 : "color:yellowgreen;" 을 출력
+            // 1 : "color:blueviolet;" 을 출력
+            // 2 : "color:orange;" 을 출력
+            // switch 문을 작성
+
+            var n4 = 122;
+            var style;
+            switch(n4 % 3){
+            case 0 :
+                document.writeln("color:yellowgreen;");
+                style="color:yellowgreen;";
+                break;
+            case 1 :
+                document.writeln("color:blueviolet;");
+                style="color:blueviolet;";
+                break;
+            case 2 : 
+                document.writeln("color:orange;");
+                style="color:orange;";
+            }
+            
+            document.write("<hr>");
+            document.writeln("<span style='" + style +"'>Hello JavaScript! </spav>");
+        </script></pre>
+</body>
+</html>

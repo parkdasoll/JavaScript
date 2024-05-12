@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example03 - Timer</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <ul id="comments" class="gray-box"></ul>
+
+    <script>
+        // #comments 에 배열 comments 의 문구를 li 요소로 2초 마다 하나씩 추가
+
+        var commentsList = [
+        /* index = 0 */ "1. Time is gold.",
+        /* index = 1 */ "2. No sweat, no sweet",
+        /* index = 2 */ "3. Asking costs nothings.",
+        /* index = 3 */ "4. Step by step goes a long way.",
+        /* index = 4 */ "5. You will never know until you try."
+        ];
+
+        // #comments 요소를 탐색
+
+        var comments = document.getElementById("comments");
+
+        var i = 0;
+        // 2초 마다
+        var timerId = window.setInterval(function(){
+            comments.innerHTML += "<li>" + commentsList[i] + "</li>";
+            i++;
+            
+            // 마지막 문구를 추가하고 인덱스가 범위를 벗어났을 때 
+            // 타이머가 더 이상 수행되지 않도록 타이머를 해제
+            
+            if(i == commentsList.length)
+                window.clearInterval(timerId);
+        },2000);
+            
+        
+    </script>
+</body>
+</html>
