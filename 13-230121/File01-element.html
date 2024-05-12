@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - element</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        ul > li {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+
+            font-size: 4em;
+            font-weight: bold;
+            line-height: 200px;
+            text-align: center;
+
+            background-color: yellowgreen;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list1" class="gray-box">
+        <li class="item1">1</li>
+        <li class="item2">2</li>
+        <li class="item3">3</li>
+    </ul>
+    <script>
+        // HTML 요소의 이동
+        //  - DOM 에 배치된 요소를 다른 위치로 이동
+        //  - 이동시킬 요소를 탐색하고
+        //    이동할 위치를 지정( = 특정 요소의 자식 요소로 추가)
+        //  → 추가될 때 탐색된 요소가 새롭게 생성 또는 복사되는 개념이 아닌
+        //    지정된 위치로 이동되는 개념
+        //      ex) 강의실의 맨 앞에 있는 의자를 맨 뒤에 배치!
+
+        // #list1 요소의 첫 번째 자식 요소를 
+        // #list1 요소의 마지막 자식 요소로 이동
+
+        // #list1 요소
+        var list1 = document.getElementById("list1");
+
+        // #list1 요소의 첫 번째 자식 요소
+        var first = document.querySelector("#list1 > li:first-child");
+        console.log(first); // <li class="item1">1</li>
+        
+        // 첫 번째 자식 요소를 마지막 자식 요소로 추가
+        list1.appendChild(first);
+        console.log(first); // <li class="item1">1</li>
+        // 변수 first 에는 .item1 이 저장되어있기 때문에
+        // DOM 에서의 상태가 바뀌더라도 .item1 이 그대로 저장되어있다.
+        
+        list1.appendChild(first);   // → 현재 상태 유지
+        
+        var first = document.querySelector("#list1 > li:first-child");
+        console.log(first); 
+        
+        list1.appendChild(first);
+    </script>
+    <hr>
+    <ul id="list2" class="gray-box">
+        <li class="item4">4</li>
+        <li class="item5">5</li>
+        <li class="item6">6</li>
+    </ul>
+    <script>
+        // #list2 요소 탐색
+        var list2 = document.getElementById("list2");
+        
+        // #list2 요소의 첫 번째 자식 요소
+        var first = list2.firstElementChild;
+        console.log(first);
+        
+        list2.appendChild(first);
+        console.log(first);
+        // → 변수에 저장된 요소는 바뀌지 않는다.
+        console.log(list2.firstElementChild);
+        // → 속성에 저장된 요소는 DOM 을 기준으로
+        //   저장되기 때문에 상태가 바뀌면 요소도 바뀐다.
+
+        list2.appendChild(list2.firstElementChild);
+        
+        // 2초 마다 #list2 요소의 첫 번째 자식 요소를
+        // #list2 요소의 마지막 자식 요소로 이동
+        window.setInterval(function(){
+            list2.appendChild(list2.firstElementChild);
+            
+            // append() : 마지막 자식 노드로 추가
+            // prepend() : 첫 번째 자식 노드로 추가
+            // list2.prepend(list2.lastElementChild);
+        },2000);
+    </script>
+</body>
+</html>

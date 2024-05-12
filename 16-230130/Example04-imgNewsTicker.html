@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example04 - img News-Ticker</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #container {
+            width: 1200px;
+            height: 600px;
+            margin: 0 auto;
+            border: 5px solid white;
+
+            overflow: hidden;
+        }
+        
+        #container > ul {
+            width: 500%;
+
+            position: relative;
+            top: 0; left: 0;
+        }
+
+        #container > ul> li > img {
+            float: left;
+
+            width: 1200px;
+            height: 600px;
+
+            
+
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+
+            var container = document.getElementById("container");
+            var imglist = document.querySelector("#container > ul");
+            
+            // 다음 사진이 보여지기 까지의 시간
+            var delay = 2000;
+            // 사진이 넘어가는 시간
+            var duration = 600;
+            
+            function nextImg () {
+
+                imglist.style.left = "-100%";
+                imglist.style.transitionDuration = duration + "ms";
+
+                window.setTimeout(function(){
+
+                    imglist.appendChild(imglist.firstElementChild);
+
+                    imglist.removeAttribute("style");
+                },duration);
+            }
+
+            var timerId = window.setInterval(nextImg, delay);
+
+            container.addEventListener("mouseenter", function(){
+
+                window.clearInterval(timerId);
+            });
+
+            container.addEventListener("mouseleave", function(){
+
+                timerId = window.setInterval(nextImg, delay);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="gray-box">
+        <div id="container">
+            <ul>
+                <li><img src="../../images/slide-11.png" alt="photo" class="slide"></li>
+                <li><img src="../../images/slide-12.png" alt="photo" class="slide"></li>
+                <li><img src="../../images/slide-13.png" alt="photo" class="slide"></li>
+                <li><img src="../../images/slide-14.png" alt="photo" class="slide"></li>
+                <li><img src="../../images/slide-15.png" alt="photo" class="slide"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example02 - Login</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #login-form {
+            width: max-content;
+            margin: 0 auto;
+        }
+        #login-form td {
+            padding: 5px;
+        }
+        #alert {
+            font-size: 0.7em;
+            color: red;
+            text-align: center;
+
+            /* display: none; */
+            visibility: hidden;
+        }
+        button[type=submit] {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            var loginForm = document.getElementById("login-form");
+            var account = document.getElementById("account");
+            var password = document.getElementById("password");
+            var alert = document.getElementById("alert");
+
+            loginForm.addEventListener("submit", function(event){
+                var accountLength = account.value.length;
+                var passwordLength = password.value.length;
+
+                // 둘 다 정상적으로 입력된 경우 핸들러를 즉시 종료
+                if(accountLength > 0 && passwordLength > 0) return;
+                else if (accountLength == 0) {
+                    alert.innerHTML = "You must enter an account!";
+                    account.focus();
+                }
+                else if (passwordLength == 0) {
+                    alert.innerHTML = "You must enter an password!";
+                    password.focus();
+                }
+
+                alert.style.visibility = "visible";
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="gray-box">
+        <form action="server/login.jsp" id="login-form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="account">Account</label></td>
+                        <td><input type="text" name="account" id="account" autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">password</label></td>
+                        <td><input type="password" name="password" id="password"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="alert">You must an account!</p>
+            <button type="submit">LOG IN</button>
+        </form>
+</body>
+</html>     

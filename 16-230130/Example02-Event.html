@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example02 - Event</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #cources {
+            list-style-type: disc; 
+            padding-left: 2em;
+        }
+        
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            
+            // #cources 요소의 자식 요소들이 저장된 배열
+            var cources = document.getElementById("cources").children;
+
+            function clearCources() {
+                for(var i = 0; i<cources.length; i++ ) {
+                    cources[i].removeAttribute("style");
+                }
+            }
+
+            for(var i = 0; i < cources.length; i++) {
+                cources[i].addEventListener("click", function(){
+                    
+                    // 기존에 색상이 설정된 요소들의 색상을 제거하기 위해
+                    // 모든 요소들을 대상으로 스타일을 제거
+                    clearCources();
+
+
+                    // 클릭한 요소의 글자 색상 = 빨강
+                    this.style.color = "red";
+                    // console.log("this = " + this.innerHTML);
+                    
+                    // 클릭한 요소의 이전 형제 요소
+                    var prev = this.previousElementSibling;
+                    // console.log("prev = " + prev.innerHTML);
+
+                    // 이전 형제가 있으면
+                    //   이전 형제 요소의 글자 색상 = 초록
+                    // if(prev != null) prev.style.color = "yellowgreen";
+                    if(prev) prev.style.color = "yellowgreen";
+                    
+                    // 클릭한 요소의 다음 형제 요소
+                    var next = this.nextElementSibling;
+                    // console.log("next = " + next.innerHTML);
+
+                    // 다음 형제가 있으면
+                    //   다음 형제 요소의 글자 색상 = 파랑
+                    if(next)next.style.color = "blue";
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <ul id="cources" class="gray-box">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+        <li>portfolio</li>
+    </ul>
+</body>
+</html>

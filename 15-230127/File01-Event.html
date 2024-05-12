@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Evant</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: yellowgreen;
+            color: navy;
+            text-align: center;
+        }
+        #box2 {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: blueviolet;
+            color: white;
+        }
+        #box3 {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: orange;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hello" class="gray-box">Hello World!</h1>
+    <script>
+        // 이벤트 객체(evant object)
+        //  - 이벤트가 발생하면 자동으로 생성되는 객체
+        //  - 이벤트가 발생했을 때의 정보를 가지고 있다.
+        //  - 이벤트 조작과 관련된 기능을 가지고 있다.
+        //  - 이벤트 핸들러의 매개변수로 전달된다.
+        //      이벤트 핸들러 : 이벤트가 발생했을 때 수행될 함수
+
+        // event 객체의 속성
+        //  - eventPhase
+        //      : 진행되고 있는 이벤트 방식(캡처링, 대상, 버블링)
+        //  - bubbles
+        //      : 이벤트 버블링에 의한 이벤트인지 여부
+        //  - target
+        //      : 이벤트가 발생한 객체
+        //  - currentTarget
+        //      : 현재 실행되고 있는 이벤트 핸들러와 연결된 객체
+        //  - cancelable
+        //      : 기본 이벤트를 제거할 수 있는지 여부
+        //  - defaultPrevented
+        //      : 기본 이벤트가 제거되었는지 여부
+        //  - type
+        //      : 이벤트 이름
+
+        // event 객체의 메서드
+        //  - stopPropagation()
+        //      : 이벤트 전달 제거
+        //  - stopImmediatePropagation()
+        //      : 연결된 다른 이벤트 핸들러를 중지
+        //  - preventDefault()
+        //      : 기본 이벤트 제거
+
+        var hello = document.getElementById("hello");
+        hello.onclick = function( event ) {
+            // #hello 요소를 클릭했을 때 수행될 함수
+            //  = click 이벤트의 핸들러
+            // 매개변수
+            //  event : 이벤트 객체
+            console.log(event);
+        }
+    </script>
+    <hr>
+    <div class="gray-box">
+        <div id="box1">Box1
+            <div id="box2">Box2
+                <div id="box3">Box3</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 이벤트 전달
+        //  - 중첩된 다른 요소로 이벤트를 전달
+        //  - 이벤트 전달의 종류
+        //      이벤트 캡처링(Event Capturing)
+        //      : 상위 요소에서 이벤트가 발생한 요소로 이벤트를 전달하는 방식
+        //      이벤트 버블링(Event Bubbling)
+        //      : 이벤트가 발생한 요소에서 상위 요소로 이벤트를 전달하는 방식
+        //      : JavaScript 에서의 기본 이벤트 전달 방식
+        //  - 이벤트가 발생하면 
+        //      캡처링에 의해 상위 요소에서 이벤트가 발생한 요소까지 이벤트가 전달
+        //      이벤트가 발생한 요소에서 이벤트 핸들러를 실행
+        //      버블링에 의해 상위 요소로 이벤트를 전달
+
+        function eventLog(event) {
+            // this = 자기 자신 = 이벤트가 발생한 객체
+
+            console.log("#" +this.id + "'s handler!")
+
+            console.log("event phase : " + event.eventPhase);
+            // 1 : 캡처링
+            // 2 : 대상
+            // 3 : 버블링
+
+            console.log("currentTarget : #" + event.currentTarget.id);
+            // → 현재 실행하고 있는 이벤트 핸들러와 연결된 객체
+            //      = this 키워드와 동일한 객체
+
+            console.log("target : #" + event.target.id);
+            // → 실제 이벤트가 발생한 객체(요소)
+            //   = 이벤트의 시작점
+
+            
+
+            console.log("-------------------------");
+
+            // event.stopPropagation();
+            // event.stopImmediatePropagation();
+            // 이벤트 전달 제거
+            //  = 실행중인 이벤트 핸들러까지만 수행
+
+        }
+
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+
+        box1.onclick = eventLog;
+        box2.onclick = eventLog;
+        box3.onclick = eventLog;
+    </script>
+    <hr>
+    <div class="gray-box">
+        <a href="http://www.naver.com" id="link">Naver</a>
+    </div>
+    <script>
+        // 기본 이벤트(Default Event)
+        //  - 요소가 기본적으로 갖는 이벤트
+        //  - 요소가 기본적으로 갖는 이벤트이기 때문에
+        //    수행시키지 않으려면 기본 이벤트를 직접 제거해야한다.
+        //  - a 요소의 click 이벤트
+        //  - form 요소의 submit 이벤트
+
+        var link = document.getElementById("link");
+
+        link.onclick = function(event) {
+            window.alert("권한이 없습니다.");
+            
+            // 이벤트 속성에 이벤트 핸들러를 설정해도 
+            // 기본 이벤트는 사라지지 않고 정산적으로 동작된다.
+            // 따라서 기본 이벤트를 수행하지 않으려면
+            // 기본 이벤트를 제거해야한다.
+            event.preventDefault();
+            
+            // → a 요소의 기본 이벤트 제거
+
+            // return false;
+            // → 이벤트 핸들러의 반환 값을 false 로 할 경우
+            //   기본 이벤트가 수행되지 않는다.
+            // → 되도록이면 메서드를 통해 명시하는 것이 좋다.
+        }
+    </script>
+</body>
+</html>

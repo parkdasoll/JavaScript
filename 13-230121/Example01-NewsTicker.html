@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - News Ticker</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #news-ticker {
+            /* 해당 요소의 영역에 하나의 문구(li)만 */
+            /* 표시될 수 있도록 크기를 설정 */
+            width: 600px;
+            height: 2em;
+            border: 10px solid gold;
+            margin: 0 auto;
+
+            /* 요소의 영역을 벗어난 문구를 숨긴다. */
+            overflow: hidden;
+        }
+
+        #news-ticker > ul {
+            padding: 0 1rem;
+
+            /* 다음 문구(li)가 보이도록 위로 이동 */
+            /* 1. margin 속성을 이용 */
+            /*      margin-top: -2em; */
+            /*      margin-top: -4em; */
+            /* 2. position 속성을 이용 */
+            /*      position: relative; */
+            /*      top: -2em; */
+            /*      top: -4em; */
+            /*      top: -100%; */
+            /*      top: -200%; */
+            /* 3. transform 속성을 이용 */
+            /*      transform: translateY(-2em); */
+            /*      transform: translateY(-4em); */
+            /*      transform: translateY(-20%); */
+            /*      transform: translateY(-40%); */
+
+            position: relative;
+            top: 0; left: 0;
+
+            transition-duration: 400ms;
+        }
+        #news-ticker > ul > li {
+            /* #news-ticker 요소의 영역에 하나의 요소만 */
+            /* 보여질 수 있도록 높이를 동일하게 설정 */
+            height: 2em;
+            line-height: 2em;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="gray-box">
+        <div id="news-ticker">
+            <ul>
+                <li>1. Time is gold.</li>
+                <li>2. No sweat, no sweet.</li>
+                <li>3. Asking costs nothing.</li>
+                <li>4. Step by step goes a long way.</li>
+                <li>5. You will never know until you try.</li>
+            </ul>
+        </div>  <!-- /#news-ticker -->
+    </div>  <!-- /.gray-box -->
+
+    <script>
+        // 0. 요소 탐색 및 변수 선언(초기화)
+        // 1. 일정 시간 마다( = 2000ms)
+        // 2. #news-ticker 요소 내의 ul 요소를
+        //    #news-ticker 요소의 높이만큼 위로 이동
+        // 3. 마지막 문구가 보여진 다음 다시 첫 번째 문구부터
+        //    보여질 수 있도록 설정
+        //-----------------------------------------------------------------------
+        // 0. 요소 탐색 및 변수 선언(초기화)
+
+        // #news-tocker 요소 내의 ul 요소
+        var newsComments = document.querySelector("#news-ticker > ul");
+        // #news-tocker 요소 내의 ul 요소 내의 li 요소의 수
+        var commentCount = document.querySelectorAll("#news-ticker > ul > li").length;
+        var delay = 2000;   // = 2000ms = 2s
+        var i = 0;          // 인덱스 변수, 보여질 문구의 인덱스
+
+        // 1. 일정 시간 마다( = 2000ms)
+        window.setInterval(function(){
+            // 2. #news-ticker 요소 내의 ul 요소를
+            //    #news-ticker 요소의 높이만큼 위로 이동
+
+            // top : -100%, -200%, -300%, -400%, 0, -100% ...
+            newsComments.style.top = (i * -100) + "%";
+           
+            // 그 다음 문구가 보여질 수 있도록 인덱스를 증가
+            i++;
+
+            // 3. 마지막 문구가 보여진 다음 다시 첫 번째 문구부터
+            //    보여질 수 있도록 설정
+            if(i == commentCount) i = 0;
+        }, delay);
+    </script>
+</body>
+</html>

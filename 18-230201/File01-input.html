@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - input event</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        input { 
+            outline: none; 
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+
+            var sample = document.getElementById("sample");
+            var text = document.getElementById("text");
+
+            text.addEventListener("focus", function(){
+                // 초점이 맞춰질 때 = 포커싱이 됐을 때
+                this.style.border = "3px solid yellowgreen";
+                this.style.borderRadius="4px";
+            });
+
+            text.addEventListener("blur", function(){ 
+                // 초점이 사라질 때 = 포커싱이 해제됐을 때
+                this.removeAttribute("style");
+            });
+
+            sample.addEventListener("submit", function(){
+
+                // form 요소의 기본 이벤트
+                //  - 입력 양식에 입력된 값들을 연결된 서버에 전달
+                //  - 연결된 서버로 페이지 이동
+                // →  만약 입력 양식 중 조건을 만족하지 않은 경우
+                //    기본 이벤트를 제거하여 페이지 이동을 막아야한다.
+
+                var length = text.value.length
+                
+                // 입력된 값이 5글자 미만이면
+                if(length < 5) {
+                    // 기본 이벤트 제거
+                    event.preventDefault();
+                    // 알림 문구
+                    window.alert("글자 수가 부족합니다.(" + length + "/5)")
+                    // #text 요소에 포커싱
+                    text.focus();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="gray-box">
+        <form action="../index.jsp" id="sample">
+            <input type="text" name="text" id="text" autocomplete="off" placeholder="Enter a plain text">
+            <button type="submit">SUBMIT</button>
+            <!-- submit 버튼을 누르면 form 요소에서 submit 이벤트가  발생 -->
+        </form>
+    </div>
+</body>
+</html>

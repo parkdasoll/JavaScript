@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Event</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #container { margin: 50px auto; }
+        #photo {
+            /* img 요소는 inline-block 이기 때문에 */
+            /* margin 속성을 통해 수평 중앙에 배치할 수 없다. */
+            /* 따라서 block 형식으로 설정해야 수평 중앙에 배치할 수 있다. */
+            display: block;
+            width: 1080px;
+            margin: 0 auto;
+            border: 10px solid white;
+        }
+
+        #thumbnails {
+            margin-top: 80px;
+            text-align: center;
+            /* inline-block 형식은 inline 형식의 특성을 가지고 있기 때문에 */
+            /* text-align 속성에 영향을 받는다. */
+        }
+
+        #thumbnails > li {
+            /* li 요소들을 나란히 배치하기 위해 */
+            /* block 형식에서 inline-block 형식으로 설정 */
+            display: inline-block;
+            margin: 0 10px;
+
+        }
+
+        #thumbnails > li > img {
+            width: 300px;
+            border: 5px solid white;
+        }
+    </style>
+    <script>
+        // window 객체의 load 이벤트
+        //  - 브라우저가 HTML 문서를 모두 읽고 해석 한 다음
+        //    DOM 의 구축이 끝난 다음에 발생하는 이벤트
+        //  - DOM 의 구축이 끝난 시점에는 body 요소 내의
+        //    모든 요소들이 생성되어있기 때문에 탐색/조작이 가능하다.
+
+        window.addEventListener("load", function(){
+            // window 객체의 load 이벤트 핸들러
+
+            // #tumbnails 요소 내의 img 요소를 클릭하면
+            // 클릭한 요소의 src 속성의 값과 #photo 요소의 src 속성의 값을 교환
+            var photo = document.getElementById("photo");
+            var thumbnails = document.querySelectorAll("#thumbnails > li > img");
+
+            // thumbnails.addEventListener("click",function(){} );
+            // → thumbnails = img 요소들을 저장하고 있는 배열
+            // → 따라서 이벤트 리스너를 연결할 수 없다.
+            // → 각 요소마다 접근하여 이벤트 리스너를 연결
+            
+            for(var i = 0; i < thumbnails.length; i++) {
+
+                // i 번째 img 요소에 click 이벤트 리스너를 연결
+                thumbnails[i].addEventListener("click", function(){
+
+                    console.log("i = " + i);
+
+                    // var src = thumbnails[i].getAttribute("src");
+                    // 변수 i 는 이벤트 핸들러가 실행할 당시의 값으로 사용되기 때문에
+                    // i 번째 요소가 클릭한 요소와 다르다
+
+                    // 클릭한 요소 = this 키워드
+
+                    /*
+                    // 클릭한 요소의 src 속성의 값을 임시 변수에 저장
+                    var tmp = this.getAttribute("src");
+
+                    // 클릭한 요소의 src 속성을 #photo 요소의 scr 속성으로 설정
+                    this.setAttribute("src", photo.getAttibute("src") );
+
+                    // #photo 요소의 src 속성을 임시 변수에 저장된 경로로 설정
+                    photo.setAttribute("src", tmp);
+                    */
+
+                    // img 요소의 src 속성(attribute)은 
+                    // element 객체의 src 속성(property) 으로 정의되어있다.
+
+                    // 클릭한 요소의 src 속성의 값을 임시 변수에 저장
+                    var tmp = this.src;
+
+                    // 클릭한 요소의 src 속성을 #photo 요소의 scr 속성으로 설정
+                    this.src = photo.src;
+
+                    // #photo 요소의 src 속성을 임시 변수에 저장된 경로로 설정
+                    photo.src = tmp;
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="cintainer">
+        <!-- 큰 이미지 -->
+        <img src="../../images/slide-11.png" alt="photo" id="photo">
+
+        <!-- 작은 이미지(htumbnail)들의 목록 -->
+        <ul id="thumbnails">
+            <li><img src="../../images/slide-12.png" alt="thumbnail"></li>
+            <li><img src="../../images/slide-13.png" alt="thumbnail"></li>
+            <li><img src="../../images/slide-14.png" alt="thumbnail"></li>
+        </ul>
+    </div>
+
+</body>
+</html>

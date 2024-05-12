@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Event</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #gallery::after { content: ""; display: block; clear: both;}
+        #gallery > li {
+            float: left;
+            margin: 5px 10px;
+        }
+        #gallery > li > a {
+            display: block;
+            border: 5px solid white;
+        }
+        #gallery > li > a > img {
+            display: block;
+            width: 200px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0 ; bottom: 0; right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+
+            /* display: none; */
+
+            transition: 400ms;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #overlay > #photo {
+            /* 최대 너비 */
+            /*  - 1200px 이상 이미지인 경우 1200px 로 고정 */
+            max-width: 1200px;
+            
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            border: 10px solid white;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            // 0. 요소 탐색 및 변수 선언
+            // 1. #gallery 요소 내의 a 요소를 클릭하면 
+            // 1-1. 클릭한 요소의 href 속성의 값을 반환
+            // 1-2. #photo 요소의 src 속성에 반환받은 href 속성 값을 설정
+            // 1-3. #overlay 요소가 화면에 보여지도록 설정
+            // 2. #overlay 요소를 클릭하면
+            // 2-1. #overlay 요소가 화면에서 사라지도록 설정
+            // ----------------------------------------------------------------------
+            // 0. 요소 탐색 및 변수 선언
+            var thumbnails = document.querySelectorAll("#gallery > li > a");
+            var photo = document.getElementById("photo");
+            var overlay = document.getElementById("overlay");
+           
+
+            for(var i = 0; i < thumbnails.length; i++) {
+                // 1. #gallery 요소 내의 a 요소를 클릭하면
+                thumbnails[i].addEventListener("click", function(event) {
+
+                    // a 요소는 기본 이벤트가 있는 요소
+                    // - 클릭하면 연결된 링크로 이동
+                    // → 이동을 하지 않으려면 기본 이벤트를 제거
+                    event.preventDefault();
+
+                    // 1-1. 클릭한 요소의 href 속성의 값을 반환
+                    //      → element 객체의 href 속성(property)으로 선언되어있다.
+                    // 1-2. #photo 요소의 src 속성에 반환받은 href 속성 값을 설정
+                    photo.src = this.href
+                    // 1-3. #overlay 요소가 화면에 보여지도록 설정
+                    // overlay.style.display = "block";
+                    overlay.style.opacity = 1;
+                    overlay.style.visibility = "visible";
+                    
+                });
+
+            }
+            // 2. #overlay 요소를 클릭하면
+            overlay.addEventListener("click", function(){
+                // 2-1. #overlay 요소가 화면에서 사라지도록 설정
+                overlay.style.display="none";
+                this.removeAttribute("style");
+                
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- 썸네일을 클릭했을 때 원본 이미지를 보여줄 오버레이 레이어 -->
+    <div id="overlay">
+        <img id="photo" src="../../images/apple.jpg" alt="">
+    </div>
+
+    <div class="gray-box">
+        <!-- 원본 이미지를 썸네일 용으로 사용할 경우 트래픽(서버 사용량)이 많이 증가하게 된다. -->
+        <!-- 따라서 썸네일 같은 경우 원본 이미지를 그대로 사용하는 것이 아닌 -->
+        <!-- 원본 이미지를 최소화한 이미지를 사용 -->
+        <ul id="gallery">
+            <!-- 
+            <li>
+                <a href="원본 이미지의 경로">
+                    <img src="썸네일 이미지의 경로" alt="thumbnail">
+                </a>
+            </li>
+            -->
+            <li>
+                <a href="../../images/slide-11.png">
+                    <img src="../../images/thumbnail-11.png" alt="thumbnail">
+                </a>
+            </li>
+            <li>
+                <a href="../../images/slide-12.png">
+                    <img src="../../images/thumbnail-12.png" alt="thumbnail">
+                </a>
+            </li>
+            <li>
+                <a href="../../images/slide-13.png">
+                    <img src="../../images/thumbnail-13.png" alt="thumbnail">
+                </a>
+            </li>
+            <li>
+                <a href="../../images/slide-14.png">
+                    <img src="../../images/thumbnail-14.png" alt="thumbnail">
+                </a>
+            </li>
+            <li>
+                <a href="../../images/slide-15.png">
+                    <img src="../../images/thumbnail-15.png" alt="thumbnail">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

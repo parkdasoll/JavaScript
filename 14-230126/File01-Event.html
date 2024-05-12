@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Evant</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <h1 id="hello1" class="gray-box">Hello World!</h1>
+    <h1 id="hello2" class="gray-box">Hello JavaScript!</h1>
+    <script>
+        // 이벤트(Event)
+        //  - 어떤 사건이나 상호작용이 발생하는 것
+        //  - JavaScript 에서의 이벤트
+        //      사용자에 의해 발생하는 이벤트   : 클릭, 입력, ...
+        //      브라우저에 의해 발생하는 이벤트 : HTML 문서 로드, 오류, ...
+        //  - 이벤트가 발생했을 때 수행할 기능들을 설정할 수 있다.
+        //  - JavaScript 에서는 특정 객체에 이벤트가 발생하면
+        //    감지할 수 있으며, 이때 객체에 연결된 기능이 있다면 그 기능을 수행한다.
+        //  - 이벤트는 요소(element)뿐만 아니라, document 객체와 window 객체에서도 발생
+
+        // 이벤트와 관련된 용어
+        //  - 이벤트 이름   : 이벤트의 이름(종류)
+        //  - 이벤트 속성   : 객체가 갖는 이벤트 속성(property)
+        //                  : 이벤트가 발생했을 때 수행할 기능(함수)를 설정
+        //                  : on + 이벤트 이름
+        //  - 이벤트 핸들러 : 객체에서 이벤트가 발생했을 때 수행할 기능(함수)
+        //                  : 객체의 이벤트 속성에 연결(설정)
+        //  - 디폴트 이벤트 : 요소가 가지는 기본적인 이벤트
+        //  - 이벤트 모델   : 이벤트와 이벤트 핸들러를 연결하는 방식
+
+
+        // #hello 요소를 클릭(click)하면
+        // #hello 요소의 글자 색상이 'orange'로 설정
+        //  - 이벤트를 연결하기 위해서는 이벤트의 이름을 알아야한다.
+        //  - 이벤트 이름 : click
+        //  - 이벤트 속성 : object.onclick
+        //  - 이벤트 핸들러 : function() { ... }
+
+        var hello1 = document.getElementById("hello1");
+        var hello2 = document.getElementById("hello2");
+
+        // click 이벤트가 발생했을 때 수행할 함수 = 이벤트 핸들러
+        function clickEvantHandler() {
+            // hello1.style.color = "orange";
+
+            // 객체의 식별자를 통해 객체의 속성에 접근하는 것 보다
+            // this 키워드를 통해 지정하는 것이 안전하다.
+            // this = 자기 자신 = 이벤트가 발생한 객체
+            this.style.color = "orange";
+        }
+
+        // clickEvantHandler();
+
+        // click 이벤트가 발생했을 때 이벤트 핸들러가 동작될 수 있도록
+        // 이벤트 속성에 연결
+        hello1.onclick = clickEvantHandler;
+        // = #hello1 요소를 클릭하면 click 이벤트가 발생하고
+        //   연결된 이벤트 핸들러가 실행된다.
+
+        hello2.onclick = clickEvantHandler;
+
+        // 이벤트 속성에는 함수가 저장되기 때문에
+        // 다른 함수를 저장할 경우 이전 함수는 사라진다.
+        hello1.onclick = function() {
+            // #hello1 요소를 클릭했을 때 수행할 함수
+
+            this.style.backgroundColor="yellowgreen";
+            this.style.color="navy";
+        }
+    </script>
+    <hr>
+    <h1 id="time" class="gray-box">Time is gold.</h1>
+    <script>
+        // #time 요소를 클릭하면
+        // #time 요소가 화면에 보여지지 않도록 코드를 작성
+
+        var time = document.getElementById("time");
+
+        time.onclick = function() {
+            // this.style.display = "none";
+
+            this.style.visibility = "hidden";
+
+            // this.style.opacity = 0;
+        }
+    </script>
+    <hr>
+    <div class="gray-box">
+        <h1 id="asking">Asking costs nothing.</h1>
+        <button id="change">Change</button>
+    </div>
+    <script>
+        // #change 버튼을 클릭할 때 마다
+        // #asking 요소의 글자 색상을
+        // 빨강, 파랑, 초록, 노랑 순으로
+        // 반복적으로 설정되도록 작성
+
+        var asking = document.getElementById("asking");
+        var change = document.getElementById("change");
+        
+        var colors = ["red", "navy", "yellowgreen", "gold"];
+        var i = 0;
+
+        change.onclick = function() {
+            asking.style.color = colors[i];
+            i++;
+            if(i == colors.length) i = 0;
+        }
+
+    </script>
+</body>
+</html>

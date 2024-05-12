@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example03 - News Ticker</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+    <style>
+        #news-ticker {
+            /* 하나의 문구가 보여질 수 있는 크기로 설정 */
+            width: 600px;
+            height: 2em;
+            margin: 0 auto;
+            border: 5px solid gold;
+
+            /* overflow: hidden; */
+        }
+        #news-ticker > ul {
+            padding: 0 1rem;
+            position: relative;
+            top: 0; left: 0;
+        }
+
+        #news-ticker > ul >li {
+            /* 하나의 문구가 #news-ticker 요소에 보여지도록 */
+            /* 높이를 동일하게 설정 */
+            height: 2em;
+            line-height: 2em;
+
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            // 0. 요소 탐색 및 변수 선언/초기화
+            // 1. 일정 시간 마다( = 2000ms)
+            // 2. ul 요소를 #news-ticker 요소의 높이만큼
+            //    위로 천천히 이동( = 600ms)
+            // 3. ul 요소의 움직임(이동)이 끝나면
+            // 4. ul 요소의 첫 번째 자식 요소를
+            //    ul 요소의 마지막 자식 요소로 이동(추가)
+            // 5. ul 요소를 원래 위치에 올 수 있도록 스타일 조작
+
+            // 6. #news-ticker 요소의 영역에 마우스 포인터가 들어가면
+            //    ul 요소가 움직이지 않도록 한다.
+            // 7. #news-ticker 요소의 영역에서 마우스 포인터가 빠져나오면
+            //    ul 요소가 다시 움직이도록 한다.
+            //--------------------------------------------------------------------------
+            // 0. 요소 탐색 및 변수 선언/초기화
+
+            // #news-ticker 요소
+            var newsTicker = document.getElementById("news-ticker");
+
+            // #news-ticker 요소 내의 ul 요소
+            var newsComments = document.querySelector("#news-ticker > ul");
+            // 다음 문구가 보여지기 까지의 시간
+            var delay = 2000;       // 2000ms
+            // 문구가 위로 이동하는 시간
+            var duration = 600;     // 600ms
+
+            function nextNewsComment(){
+                // 2. ul 요소를 #news-ticker 요소의 높이만큼
+                //    위로 천천히 이동( = 600ms)
+                newsComments.style.top = "-100%";
+                newsComments.style.transitionDuration = duration + "ms";
+
+                // 3. ul 요소의 움직임(이동)이 끝나면 = 600ms 뒤에 
+                window.setTimeout(function(){
+
+                    // 4. ul 요소의 첫 번째 자식 요소를
+                    //    ul 요소의 마지막 자식 요소로 이동(추가)
+                    newsComments.appendChild(newsComments.firstElementChild);
+                    // 5. ul 요소를 원래 위치에 올 수 있도록 스타일 조작
+                    // newsComments.style.top = 0;
+                    // newsComments.style.transitionDuration ="0ms";
+                    newsComments.removeAttribute("style");
+                    // → 요소의 style 속성(attribute)을 제거
+                }, duration);
+            }
+
+
+
+            // 1. 일정 시간 마다( = 2000ms)
+            var timerId = window.setInterval(nextNewsComment, delay)
+
+            // 6. #news-ticker 요소의 영역에 마우스 포인터가 들어가면
+            newsTicker.addEventListener("mouseenter", function(){
+                //    ul 요소가 움직이지 않도록 한다.
+                // → ul 요소는 타이머에 의해 움직이기 때문에
+                //   멈추게 하려면 타이머를 해제해야한다.
+                // → 타이머를 해제하려면 등록된 타이머의 id 가 필요
+
+                window.clearInterval(timerId);
+            });
+            // 7. #news-ticker 요소의 영역에서 마우스 포인터가 빠져나오면
+            newsTicker.addEventListener("mouseleave", function(){
+                //    ul 요소가 다시 움직이도록 한다.
+                // → 다시 움직이려면 타이머를 다시 등록해야한다.
+                // → 새로운 타이머가 등록됐기 때문에
+                //   timerId 도 갱신해야한다.
+                timerId = window.setInterval(nextNewsComment, delay);
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="gray-box">
+        <div id="news-ticker">
+            <ul>
+                <li>1. Quisque eget arcu ac erat rhoncus sollicitudin non vitae lorem.</li>
+                <li>2. Quisque in eros sed dui congue vestibulum.</li>
+                <li>3. Ut vel ligula hendrerit, facilisis nulla ut, sagittis lacus.</li>
+                <li>4. Vestibulum quis elit ac lectus fringilla fermentum vitae at dui.</li>
+                <li>5. Vivamus aliquet augue in nisl porttitor, eu vestibulum lectus blandit.</li>
+            </ul>
+        </div>  <!-- /#news-ticker -->
+    </div>  <!-- /.gray-box -->
+    
+</body>
+</html>
