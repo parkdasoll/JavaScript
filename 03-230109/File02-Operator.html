@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Operator</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        //  연산자(operator)
+        //  - 연산을 나타내기 위한 문자(기호)
+        //  - 값을 만들어내는 표현식을 만들 때 사용
+
+        //  산술 연산자
+        //  - 사칙 연산을 하기 위한 연산자
+        //  - 종류
+        //      + : 더하기 연산자
+        //      - : 빼기 연산자
+        //      * : 곱하기 연산자
+        //      / : 나누기 연산자, 나누어떨어지지 않으면 실수형태로 반환
+        //      % : 나머지 연산자
+        document.writeln("산술 연산자");
+        var n1 = 10, n2 = 7;
+        document.writeln(n1 + " + " + n2 + " = " + (n1 + n2));
+        document.writeln(n1 + " - " + n2 + " = " + (n1 - n2));
+        document.writeln(n1 + " * " + n2 + " = " + (n1 * n2));
+        document.writeln(n1 + " / " + n2 + " = " + (n1 / n2));          // 실수
+        document.writeln(n1 + " / " + n2 + " = " + parseInt(n1 / n2));  // 정수
+        // → 나누기 연산자를 통해 나눗셈을 한 경우
+        //   나눠떨어지지 않으면 실수가 반환된다.
+        // → 만약 실수 형태가 아닌 정수 형태를 원한다면
+        //   실수 형태의 값을 반올림 하거나 정수 형태로 변환을 해야한다.
+        //      parseInt() 함수 : 정수형(int) 으로 변환하는 함수
+        document.writeln(n1 + " % " + n2 + " = " + (n1 % n2));
+
+        // 나누기 관련 연산자의 활용
+        // 1. 단위 변환
+        //      - 1521g → 1.531kg → 1kg 521g
+        // 2. 배수 확인
+        //      - n 의 배수 = n * 1, n * 2, n * 3 ...
+        //                  = n 으로 나누어 떨어지는 수
+        //                  = n 으로 나누었을 때 나머지가 0 인 수
+        // 3. 그룹 관리
+        //      - 152개의 게시글을 게시판에 출력할 때
+        //        한 페이지의 10개의 글을 출력한다면
+        //        총 페이지 수와 마지막 페이지의 글의 수
+    </script></pre>
+    
+    <pre><script>
+        var time = 2145; // 2145 초
+
+        // 변수 time 에 저장된 시간이
+        // 몇시간 몇분 몇초인지 출력하는 프로그램을 작성
+
+        document.writeln(parseInt(time/3600) + "시" + parseInt(time/60) + "분" + (time%60) + "초");
+        
+
+    </script></pre>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Condition</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 조건 연산자(Conditional Operator)
+        // - 조건 결과에 따라 값을 결정하는 연산자
+        // - 즉, 조건의 결과가 true 일 때와 false 일 때 반환되는 값이 다르다.
+        // - 표현식
+        //      조건식 ? true 일 때 반활할 표현식 : false 일 때 반환할 표현식
+
+        // 시험의 합격 여부를 출력
+        //  점수의 커트라인 = 80
+
+        var score = 75;
+
+        var ispass = score >= 80;
+        document.writeln("Pass Status : " + ispass);
+        
+        // true → "Pass"
+        // false → "Fail"
+        var passstatus = (score >= 80) ? "Pass" : "Fail";
+        // var passstatus = (75 >= 80) ? "Pass" : "Fail";
+        // var passstatus = (false) ? "Pass" : "Fail";
+        // var passstatus = "Fail";
+
+        document.writeln("Pass Status : " + passstatus);
+    </script></pre>
+
+    <pre><script>
+        // 변수 n1 의 값이 짝수이면 "even number" 를 출력하고
+        // 그렇지 않으면 "odd number" 를 출력
+
+        var n1 = 3572;
+
+        var result1 = (n1 % 2 == 0) ? "even number" : "odd number";
+        
+        var result1 = !(n1 % 2) ? "even number" : "odd number";
+        
+        var result1 = (n1 % 2) ? "odd number" : "even number" ;
+
+        document.writeln(n1 + " is "+ result1 + ".");
+    </script></pre>
+
+    <pre><script>
+        // 변수 n2 의 값이 3의 배수이거나 7의 배수이면 "Wonderful Day!" 를 출력하고
+        // 그렇지 않은 경우레는 "Beautiful Day!" 를 출력
+
+        n2 = 1668;
+
+        var result2 = !(n2 % 3) || !( n2 % 7) ? "Wonderful Day!" : "Beautiful Day!";
+                
+        // var result2 = (!(n2 % 3) || !( n2 % 7)) ? "Wonderful Day!" : "Beautiful Day!";
+        // var result2 = !((n2 % 3) && ( n2 % 7)) ? "Wonderful Day!" : "Beautiful Day!";
+                
+        document.writeln(result2);
+    </script></pre>
+    <hr>
+    <pre><script>
+        // 제어문(Control Statement)
+        // - 프로그램의 흐름을 제어하기 위한 구문
+        // - 일반적으로 프로그램의 흐름은 작성된 순서대로 실행
+        // - 이 흐름을 제어하기 위한
+        //      조건문 : 조건에 따른 코드를 결정하기 위한 구문
+        //      반복문 : 횟수 또는 조건에 따라 반복 수행하기 위한 구문
+        // - 제어문 뒤에는 하나의 명령어 또는 하나의 블록이 작성된다.
+        //      블록 = 다수의 명령어를 감싸는 영역이며, 중괄호를 통해 감싼다.
+
+        // 조건문(Conditional Statement)
+        // - 조건에 따라 코드를 결정하기 위한 구문
+        // - 종류
+        //      단순 if 문
+        //      if-else 문
+        //      if-else if 문
+        //      switch 문
+
+        // 단순 if 문
+        //  - 특정 조건을 만족하는 경우에만 코드를 수행시킬 때 사용
+        //  - 조건을 만족하지 않으면 코드를 넘긴다.
+        document.writeln("단순 if 문");
+
+        var a = 5;
+        document.writeln("a = " + a );
+        
+        // 만약 a 가 10 보다 크면 "a 가 10보다 큽니다." 를 출력
+        if(a > 10) {
+            // if 의 조건식을 만족할 경우에만 수행
+
+            document.writeln("a 가 10 보다 큽니다.");
+        }
+    </script></pre>
+    <pre><script>
+        // if-else 문
+        //  - 조건의 결과에 따라 코드를 수행시킬 때 사용
+        //  - 단순 if 문에서 else 구문이 추가된 형태
+        //  - else = '또는', '그 밖에 다른'
+        //     → else 구문은 반드시 'if 문 이후에 작성' 되어야 한다.
+        //  - else 구문에는 조건식을 절대 작성하지 않는다.
+        //     → 앞의 if 문의 조건 결과가 false 일 때 수행
+        //  - 조건 연산자와의 차이점
+        //    조건 연산자  : 조건 결과에 따라 값(표현식)을 결정
+        //    조건 문      : 조건 결과에 따라 수행할 명령어를 결정
+
+        document.writeln("if-else 문");
+
+        document.writeln("a = " + a );
+        
+        // 만약 a 가 10 보다 크면 "a 가 10보다 큽니다." 를 출력
+        // 그렇지 않으면 "a 가 10 보다 크지 않습니다." 를 출력
+        if(a > 10) {
+            // if 의 조건식을 만족할 경우에만 수행
+
+            document.writeln("a 가 10 보다 큽니다.");
+        } // if 의 끝
+        else {
+            // 위의 if 의 조건식을 만족하지 않은 경우에 수행
+
+            document.writeln("a 가 10 보다 크지 않습니다.");
+        }
+    </script></pre>
+
+    <pre><script>
+        // 변수 n3 의 값이 50 보다 큰 3의 배수이면 "Hello World!" 를 출력하고
+        // 그렇지 않으면 "see you later!" 을 출력
+
+        var n3 = 71;
+        if((n3 > 50) && (n3 % 3 == 0)) {
+            document.writeln("Hello World!");
+        }
+        else {
+            document.writeln("See you later!");
+        }
+    </script></pre>
+
+    <pre><script>
+        // 두 개의 변수에 저장된 값 중 큰 값과 작은 값을 각각 출력
+        var num1 = 43;
+        var num2 = 76;
+        document.writeln("num1 = " + num1);
+        document.writeln("num2 = " + num2);
+        if(num1>num2){
+            document.writeln("max = " + num1);
+        }
+        else{
+            document.writeln("min = " + num1);
+        }
+        if(num1<num2){
+            document.writeln("max = " + num2);
+        }
+        else{
+            document.writeln("min = " + num2);
+        }
+        
+        // 출력
+        //   max = 76
+        //   min = 43
+    </script></pre>
+</body>
+</html>

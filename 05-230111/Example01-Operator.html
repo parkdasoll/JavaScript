@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Operator</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 나이가 20살 이상 25살 미만인지 논리 값으로 출력
+        var age = 17;
+        var result1 = (age >= 20) && (age < 25);
+        
+        document.writeln("나이가 20살 이상이고 25살 미만입니까?");
+        document.writeln("→" + result1);
+    </script></pre>
+
+    <pre><script>
+        // 변수 num1 에 저장된 값이 3의 배수인지 논리 값으로 출력
+        
+        var n1 = 21568;
+
+        // 3의 배수
+        // = 3으로 곱해지는 수(3*1, 3*2, 3*3 ...)
+        // = 3으로 나누어 떨어지는 수
+        // = 3으로 나누었을 때 나머지가 0 인 수
+        var result2 = (n1 % 3 == 0);
+        
+        // 값이 0 인지 검사해야하는 경우에는
+        // 논리 연산자 중 부정 연산자(NOT 연산자, !)를 통해 작성할 수 있다.
+        var result2 = !(n1 % 3);
+
+
+        document.writeln(n1 + " 의 값이 3의 배수입니까?");
+        document.writeln("→" + result2);
+    </script></pre>
+
+    <pre><script>
+        // 변수 num2 에 저장된 값이 70 미만이거나 100 초과인지 논리 값으로 출력
+
+        var num2 = 77;
+
+        var result3 = (num2 < 70) || (num2 > 100);
+
+        document.writeln(num2 + "의 값이 70미만이거나 100 초과 입니까?");
+        document.writeln("→" + result3)
+
+    </script></pre>
+</body>
+</html>

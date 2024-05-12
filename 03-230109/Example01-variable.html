@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Variable</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        // 반지름이 9 인 원의 둘레와 넓이를 구한 다음
+        // 반지름 , 둘레, 넓이를 각각 출력하는 프로그램을 작성
+        
+        // 둘레와 넓이를 구할 때 반지름을 사용하기 때문에
+        // 재사용할 수 있도록 반지름을 저장해서 사용하자!
+        
+        // 변수(variable) = 데이터를 저장하기 위한 '식별자가 부여된 저장 공간'
+
+        // 반지름을 저장하기 위한 변수
+        var radius = 9;
+
+        // 원의 넓이를 저장하기 위한 변수
+        var area = 3.14 * radius * radius;
+
+        // 원의 둘레를 저장하기 위한 변수
+        var perimeter = 2 * 3.14 * radius;
+
+        document.writeln("Circle's radius    =" + radius);
+        document.writeln("Circle's area      =" + area);
+        document.writeln("Circle's perimeter =" + perimeter);
+    </script></pre>
+</body>
+</html>

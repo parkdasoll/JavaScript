@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example01 - Operator</title>
+</head>
+<link rel="stylesheet" href="../../CSS/reset.css">
+<link rel="stylesheet" href="../../CSS/dark.css">
+<body>
+    <pre><script>
+        // 주어진 시간(단위:second)이 몇시간 몇분 몇초인지 출력
+
+        var time = 12416;   // 12415초
+
+        // 1s = 1s
+        // 1m = 60s
+        // 1h = 60m = 3600s
+         
+        var hour = parseInt(time / 3600);
+        var minute = parseInt((time % 3600) / 60);
+        var second = time % 60;
+
+        document.write(time + "s → ");
+        document.write(hour + "h ");
+        document.write(minute + "m ");
+        document.write(second + "s ");
+        
+    </script></pre>
+</body>
+</html>

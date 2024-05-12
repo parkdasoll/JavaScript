@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Variable</title>
+    <link rel="stylesheet" href="../../CSS/reset.css">
+    <link rel="stylesheet" href="../../CSS/dark.css">
+</head>
+<body>
+    <pre><script>
+        //JavaScript 는 프로그래밍 언어이기 때문에
+        // 프로그램 내의 데이터를 다룰 수 있어야 한다.
+
+        // 데이터(Data)
+        // - 프로그램에서는 값
+        // - 실 생활에서 문자와 숫자를 구분하듯이
+        //   프로그램 내에서도 데이터를 구분하여 사용한다.
+
+        // 자료형(Data Type)
+        // - 프로그램에서 다루는 데이터의 종류를 정의
+        // - 종류
+        //      number      = 숫자
+        //       : 소수점이 없는 수(정수)와 소수점이 있는 수(실수)를
+        //         표현하기 위한 타입
+        //       : 100, 600, -10, 3.14555
+        //      boolean     = 논리
+        //       : 참 또는 거짓을 표현하기 위한 타입
+        //       : 참 = true, 거짓 = false
+        //      string      = 문자열
+        //       : 문자 또는 문자들의 집합체를 표현하기 위한 타입
+        //       : 문자들을 따옴표로 묶어서 표현
+        //       : 따옴표로 묶지 않으면, 이는 데이터가 아닌 키워드 또는 식별자로 인식한다.
+        //       : "Hello", "3000", ""
+        //      funcion     = 함수
+        //       : 정의된 함수(기능)를 표현하기 위한 타입
+        //       : 다수의 명령어들의 집합체
+        //      object      = 객체
+        //       : 특정 대상을 표현하기 위한 타입
+        //       : 객체의 레퍼런스를 표현
+        //      undefined
+        //       : '아무런 데이터가 존재하지 않는다.' 를 의미하는 타입
+        // ----------------------------------------------------------------------------
+        // number 타입
+        // - 정수(integer)
+        //      : 소수점이 없는 수
+        // - 실수(floating-point)
+        //      : 소수점이 있는 수
+        document.writeln("------------number------------");
+        document.writeln(100);  // 정수
+        document.writeln(-10);   // 정수
+        document.writeln(1.15);  // 실수
+
+        // boolean 타입
+        // - 명제 또는 조건의 결과 값을 표현
+        // - 0, "", underfined, null 은 false 와 같은 취급
+        //  그 외 모든 데이터들은 true 와 같은 취금
+        document.writeln("------------boolean------------");
+        document.writeln(true);     // 참
+        document.writeln(false);    // 거짓
+        document.writeln(10 > 5);     // 참
+        document.writeln(10 > 20);  // 거짓
+        
+        // string 타입
+        // - 문자들의 집합체
+        // - 연결 연산자(+)를 통해 다른 데이터와
+        //   하나의 문자열로 연결 시킬 수 있다.
+        // - 문자열 내에 표현할 수 없는 문자들을
+        //   표현하기 위한 제어 문자(excape character)
+        document.writeln("------------string------------");
+        document.writeln("Hello World!");
+        // document.writeln(Hello World!);
+        // → 두 단어를 각각 식별자로 인식하며
+        //   두 식별자를 연속해서 작성하는 표현식이 없기때문에
+        //   문법 오류가 발생한다. → VS Code 에서 오류
+        // document.writeln(Hello);
+        // → 따옴표가 없으면 문자 형식의 데이터가 아닌
+        //   식별자로 인식하기 때문에 원하는 값이 출력되지 않고 오류가 발생한다.
+        document.writeln("Nunber = " + 90);
+        // = document.writeln("nunber = 90" );
+        document.writeln("Nunber = " + 90 + 5);
+        // document.writeln("nunber = 905");
+        // → 연결 연산자를 연속해서 사용하는 경우
+        //   왼쪽에서부터 차례대로 연산을 하기 때문에
+        //   우선 순위를 명시하는 것이 좋다.
+        document.writeln("Nunber = " + (90 + 5));
+        // = document.writeln("Nunber = " + 95);
+        // = document.writeln("Nunber = 95");
+        
+        // 제어 문자
+        //  \n = new line(개행 문자)
+        //  \t = tab
+        //  \" = 큰 따옴표 문자
+        //  \' = 작은 따옴표 문자
+        document.writeln("Wonderful Day!\nBeautiful Day!");
+        document.writeln("This is \"apple\".")
+    </script></pre>
+
+    <pre><script>
+        // 자신의 이름과 나이를 출력하는 JavaScript 코드를 작성
+
+        // Name : 홍길동
+        // Age  : 26
+
+        document.writeln("Name : " + "박다솔");
+        document.writeln("Age : " + 24);
+    </script></pre>
+
+    <pre><script>
+        // typeof 연산자
+        // - 데이터의 자료형을 확인하기 위한 연산자
+        // - 자료형을 문자열로 반환한다.
+        document.writeln(typeof "Hello");
+        document.writeln(typeof 100);
+        document.writeln(typeof (10 > 40));
+        // document.writeln(typeof (false));
+        // document.writeln("boolean");
+    </script></pre>
+
+    <pre><script>
+        document.writeln(150);          // 사각형의 너비
+        document.writeln(200);          // 사각형의 높이
+        document.writeln(150 * 200);    // 사각형의 넓이
+        // → 동일한 데이터를 중복해서 작성해야한다.
+        // → 연산된 데이터를 유지할 수가 없다.
+        // → 사용된 데이터들의 용도/목적을 알 수 없다.
+        document.writeln("<hr>");
+        // 변수(Variable)
+        // - "변하는 수"
+        // - 프로그램 내에서 데이터를 다루기 위한 가장 기본적인 수단
+        //      : 프로그램은 스스로 데이터를 저장하지 않기 때문에
+        //        데이터를 저장하고 관리하기 위한 수단이 필요
+        // - 가장 기본적인 기능 = 데이터의 저장
+        // - 저장된 데이터들을 식별하기 위한 식별자를 부여
+        // → 데이터를 저장하기 위한 '식별자가 부여된 저장 공간'
+
+        // 변수의 역할
+        // - 데이터의 저장/유지
+        // - 데이터의 재사용
+        // - 사용되는 데이터의 용도/목적
+
+        // 변수를 사용하기 위한 방법
+        // 1. 변수 선언
+        //      - 데이터를 저장할 저장 공간을 만들고 식별자를 부여하는 과정
+        //      - var 키워드와 함께 식별자를 작성
+        //      - 식별자는 저장될 데이터에 용도/목적에 맞게 작성
+        var width;  // 사각형의 너비를 저장하기 위한 변수 width 를 선언
+
+        // 2. 데이터 대입(저장)
+        //      - 선언된 변수(저장 공간)에 데이터를 대입(저장, 할당)하는 과정
+        //      - 대입 연산자(=)를 통해 변수에 데이터를 저장
+        //          variable = data;
+        //      - 대입 연산자의 우선 순위가 제일 낮기 때문에
+        //        우측의 '표현식의 결과 값'이 변수에 저장된다.
+        //          variable = expression;
+        width = 100;            // 변수 width 에 100 을 대입
+        width = 100 + 50;       // 변수 width 에 100 과 50 을 더한 값을 대입
+        // → width = 150;
+
+        // 3. 변수 초기화(initialization)
+        //      - 변수를 선언함과 동시에 데이터를 대입하는 과정
+        var height = 200;       // 변수 height 를 선언하고 200 을 대입
+
+        // 4. 변수 사용
+        //      - 변수의 식별자를 코드에 그대로 작성하면
+        //        변수에 저장된 값을 반환( = 저장 공간에서 가져온다.)
+        document.writeln(width);        // 변수 widht 에 저장된 값을 출력
+        // = document.writeln(150);
+
+        document.writeln("height = " + height);
+        // = document.writeln("height = " + 200);
+        // = document.writeln("height = 200");
+        // → 변수가 연산자와 같이 작성되면
+        //   변수에 저장된 값을 먼저 반환한다.
+
+        // 주의 할 점
+        // 1. 변수의 값이 다른 값으로 대입되면
+        //    바뀐 값은 그 다음 수행되는 명령어부터 사용된다.
+        //    즉, 이미 수행된 명령어에는 아무런 영향을 주지 않는다.
+        // 2. 대입 연산자는 연산된 결과 값을 저장한다.
+        //    즉, 표현식을 저장하는 것이 아니다.
+        // 3. 변수 초기화를 습관화하는 것이 좋다.
+        width = 200;
+        var area = width * height;  
+        // → var area = 200 * 200
+        // → var area = 40000
+        document.writeln("area = " + area);
+        
+        height = 100;
+        document.writeln("area = " + area);
+        // → 변수 area 는 '연산된 값'을 저장하고 있기 때문에
+        //   변수 height 의 값이 다른 값으로 바뀌면
+        //   다시 연산해야한다.
+
+        area = width * height;
+        document.writeln("area = " + area);
+
+        var perimeter;
+        document.writeln("type of area : " + typeof area);
+        document.writeln("type of perimeter : " + typeof perimeter);
+
+        document.writeln("perimeter + 100 = " + (perimeter + 100));
+        // NaN = Not a Number
+        //     = 숫자 형태가 아니며, 연산 불가능함을 나타낸다.
+
+        // 바로 대입할 데이터가 없으면 기본 값으로 초기화해주는 것이
+        // 프로그램의 안정성을 높인다.
+        //  기본 값 : 0, false, "", null
+        var perimeter = 0;
+        </script></pre>
+</body>
+</html>
